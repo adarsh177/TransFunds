@@ -1,0 +1,31 @@
+.Topbar-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  height: 4rem;
+}
+.Topbar-wrapper::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: calc(100% - 40px);
+  height: 1px;
+  background-color: #bebebe;
+  left: 20px;
+  top: 60px;
+}
+.back-btn {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  padding-right: 20px;
+  height: 2rem;
+}
+.Title {
+  font-size: 18px;
+  color: #535353;
+  font-weight: 600;
+  text-transform: capitalize;
+}
