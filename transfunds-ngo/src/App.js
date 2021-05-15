@@ -4,7 +4,7 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import SplashScreen from "./components/SplashScreen";
+import SplashScreen from "./screens/SplashScreen";
 
 class App extends React.Component{
   render(){
