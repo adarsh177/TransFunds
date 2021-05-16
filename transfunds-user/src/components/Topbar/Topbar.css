@@ -1,3 +1,10 @@
+.topbar-pre-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .Topbar-wrapper {
   display: flex;
   flex-direction: row;
@@ -22,10 +29,28 @@
   margin-right: 10px;
   padding-right: 20px;
   height: 2rem;
+  outline: none;
 }
 .Title {
   font-size: 18px;
   color: #535353;
   font-weight: 600;
   text-transform: capitalize;
+}
+
+.Logout-btn {
+  background-color: #edeef7;
+  border: none;
+  outline: none;
+  color: #7868e6;
+  width: 70px;
+  height: 1.8rem;
+  font-size: 12px;
+  transition: 0.3s ease all;
+  cursor: pointer;
+}
+.Logout-btn:hover,
+.Logout-btn:focus {
+  background-color: #7868e6;
+  color: #edeef7;
 }

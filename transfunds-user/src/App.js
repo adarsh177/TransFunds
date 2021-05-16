@@ -4,6 +4,7 @@ import SplashScreen from "./screens/SplashScreen/SplashScreen";
 import Dashboard from "./screens/Dashboard/Dashboard";
 import Listyourngo from "./screens/ListYourNgo/ListYourNgo";
 import NgosList from "./screens/NgosList/NgosList";
+import NgoDetail from "./screens/NgoDetail/NgoDetail";
 
 class App extends React.Component {
   render() {
@@ -22,6 +23,9 @@ class App extends React.Component {
           <Route path="/ngolist" exact>
             <NgosList />
           </Route>
+          <Route path="/ngodetail" exact>
+            <NgoDetail />
+          </Route>
         </Switch>
       </Router>
     );
@@ -29,3 +33,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+//  autoHide autoHideTimeout={1000} autoHideDuration={200}

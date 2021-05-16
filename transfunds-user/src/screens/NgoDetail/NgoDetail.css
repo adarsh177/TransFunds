@@ -1,0 +1,36 @@
+@import "react-tabs/style/react-tabs.css";
+
+.pre-wrapper-tabs,
+.NgoDetailCard-wrapper {
+  width: 100%;
+  margin-top: 20px;
+}
+.ws-content-wrapper {
+  width: 100%;
+  height: 11rem;
+}
+.ws-content {
+  font-size: 12px;
+  font-weight: 500;
+  color: #535353;
+}
+.react-tabs__tab,
+.react-tabs__tab--selected {
+  height: 1rem;
+  padding: 2px 10px 10px;
+}
+.react-tabs__tab {
+  border: 1px solid #bebebe;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  margin: 0 5px;
+}
+.react-tabs__tab--selected {
+  background-color: #7868e6;
+  color: #fff;
+}
+.Transaction-wrapper {
+  width: 100%;
+  height: 26rem;
+  margin-top: 20px;
+}
