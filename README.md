@@ -2,9 +2,12 @@
 <h1>TransFunds</h1>
 
 By: Developer's Monk (Adarsh Shrivastava, Abhishek Kumar)<br>
-**App is live at: https://transfunds.developersmonk.com**
+**User-App is live at: https://transfunds.developersmonk.com**
+**Ngo-App is live at: https://ngotransfunds.developersmonk.com**
 
-Tarnsparent Fund transfer to NGOs. All the NGOs listed here are verified through government website NGODarpan so It is totally genuine
+If you want to list your ngo, head to Ngo-App. Else to make donations, head to User-App
+
+Tarnsparent Fund transfer to NGOs. All the NGOs listed here are verified through government website NGODarpan APIs so It is totally genuine
 
 ### A Decentralized transparent donation web app using Matic testnet block-chain technology
 - User Identity management - using Portis
