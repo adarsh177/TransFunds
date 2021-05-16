@@ -1,5 +1,162 @@
 {
     "portis_app_id": "d8114455-6fa6-4d5c-af50-7f1a6bc7aae8",
     "nodeUrl": "https://rpc-mumbai.matic.today",
-    "chainId": 137
+    "chainId": 137,
+    "contractAddress": "0xa644593f7f97803454Fd0dEAee8303c876C7DE76",
+    "contractAbi": [
+        {
+          "inputs": [],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "note",
+              "type": "string"
+            }
+          ],
+          "name": "Transaction",
+          "type": "event"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "ngo_address",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "ngoId",
+              "type": "string"
+            }
+          ],
+          "name": "AddNGO",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "getOwner",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "constant": true
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "purpose",
+              "type": "string"
+            }
+          ],
+          "name": "WithdrawMoney",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "ngoId",
+              "type": "string"
+            }
+          ],
+          "name": "GetTotalDonationOfNGO",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "constant": true
+        },
+        {
+          "inputs": [],
+          "name": "GetAvailableDonationOfNGO",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "constant": true
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "ngoId",
+              "type": "string"
+            }
+          ],
+          "name": "DonateToNGO",
+          "outputs": [],
+          "stateMutability": "payable",
+          "type": "function",
+          "payable": true
+        },
+        {
+          "inputs": [],
+          "name": "GetNGOList",
+          "outputs": [
+            {
+              "internalType": "string[]",
+              "name": "",
+              "type": "string[]"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "constant": true
+        }
+      ]
 }

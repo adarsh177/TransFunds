@@ -30,6 +30,7 @@ class SplashScreen extends React.Component {
     window.web3.eth.getAccounts((err, acounts) => {
       window.accountId = acounts[0];
       console.log(err, acounts);
+      window.contract = new window.web3.eth.Contract(config.contractAbi, config.contractAddress);
       this.moveForward();
     })
   }

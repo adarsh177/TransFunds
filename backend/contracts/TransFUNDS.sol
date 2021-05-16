@@ -11,7 +11,7 @@ contract TransFUNDS{
 
     event Transaction(
         address indexed from,
-        address indexed to,
+        string indexed to,
         uint amount,
         string note
     );
@@ -67,7 +67,7 @@ contract TransFUNDS{
 
         payable(msg.sender).transfer(amount);
         availableDonations[id] -= amount;
-        emit Transaction(owner, msg.sender, amount, purpose);
+        emit Transaction(owner, id, amount, purpose);
 
         return availableDonations[id];
     }
@@ -106,6 +106,7 @@ contract TransFUNDS{
         
         totalDonations[ngoId] += msg.value;
         availableDonations[ngoId] += msg.value;
+        emit Transaction(msg.sender, ngoId, msg.value, "Donation");
     }
 
     // returns arrays of name

@@ -97,4 +97,30 @@ app.post('/AddNGO_VerifyOTP', (req,res) => {
     }
 });
 
+app.get('/NGODetail', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin',"*");
+    if(req.query.id){
+        utils.GetNGODetails(req.query.id, (err, details) => {
+            if(err == null){
+                res.status(200);
+                res.send({
+                    success: 1,
+                    details: details
+                });    
+            }else{
+                res.status(500);
+                res.send({
+                    success: 0,
+                    error: err
+                });    
+            }
+        });
+    }else{
+        res.status(400);
+        res.send({
+            success: 0
+        });    
+    }
+});
+
 app.listen(2020);

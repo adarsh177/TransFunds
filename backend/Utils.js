@@ -51,7 +51,8 @@ module.exports = {
                 field: response.data.infor['0'].Major_Activities1,
                 mobile: response.data.infor['0'].Mobile,
                 email: response.data.infor['0'].Email,
-                name: response.data.infor['0'].ngo_name
+                name: response.data.infor['0'].ngo_name,
+                location: response.data.infor.operational_states_db
               }
               callback(null, result);
             })
