@@ -5,6 +5,7 @@ import Topbar from "../../components/Topbar/Topbar";
 import SubHeading from "../../components/SubHeading/SubHeading";
 import { Scrollbars } from "react-custom-scrollbars";
 import Utils from "../../Utils/Utils";
+import OTPDialog from "../../components/OTPDialog";
 
 export class ListYourNgo extends Component {
   constructor(props){
@@ -12,6 +13,7 @@ export class ListYourNgo extends Component {
     this.state={
       vid: '',
       ngoId: '',
+      email: '',
       showOtp: false,
     }
   }
@@ -28,7 +30,7 @@ export class ListYourNgo extends Component {
             ngoId: id,
             vid: vid,
             email: email
-          });    
+          });
         }else{
           alert('Error sending otp');
         }
@@ -38,7 +40,20 @@ export class ListYourNgo extends Component {
   }
 
   onOtpSubmit(otp){
-
+    if(otp.length != 6){
+      alert('Enter valid otp');
+    }else{
+      Utils.verifyOtp(this.state.ngoId, otp, this.state.vid, window.accountId, (status) => {
+        this.setState({showOtp: false});
+        if(status){
+          alert('NGO Listed');
+          window.accountId = null;
+          this.props.history.push('/');
+        }else{
+          alert('Error verifying otp');
+        }
+      })
+    }
   }
 
   render() {
@@ -47,6 +62,7 @@ export class ListYourNgo extends Component {
     return (
       <div className="MainContainer">
         <div className="MobileContainer MobileContainerFlow">
+          <OTPDialog show={this.state.showOtp} email={this.state.email} onOtp={(otp) => this.onOtpSubmit(otp) }/>
           <Topbar title="List Your NGO" />
           <div className="registerNgo-wrapper">
             <input

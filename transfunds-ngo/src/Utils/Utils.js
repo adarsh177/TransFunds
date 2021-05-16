@@ -4,7 +4,7 @@ module.exports = {
     getNGODetail: (id, cb) => {
         axios({
             method: 'get',
-            url: `http://localhost:2020/NGODetail?id=${id}`
+            url: `https://back.transfunds.developersmonk.com/NGODetail?id=${id}`
         }).then(
             details => {
                 console.log('details', details);
@@ -18,7 +18,7 @@ module.exports = {
     sendOtp: (regId, cb) => {
         axios({
             method: 'post',
-            url: `http://localhost:2020/AddNGO_SendOTP`,
+            url: `https://back.transfunds.developersmonk.com/AddNGO_SendOTP`,
             data: JSON.stringify({ngoId: regId})
         }).then(
             details => {
@@ -33,7 +33,7 @@ module.exports = {
     verifyOtp: (regId, otp, vid, wallet, cb) => {
         axios({
             method: 'post',
-            url: `http://localhost:2020/AddNGO_VerifyOTP`,
+            url: `https://back.transfunds.developersmonk.com/AddNGO_VerifyOTP`,
             data: JSON.stringify({v_id: vid, otp: otp, ngoId: regId, wallet: wallet})
         }).then(
             details => {
