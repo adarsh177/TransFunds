@@ -65,7 +65,10 @@ export class NgoDetail extends Component {
       .then(bn => {
         window.contract.getPastEvents('allEvents', {
           fromBlock: bn-500,
-          toBlock: 'latest'
+          toBlock: 'latest',
+          filter: {
+            to: id
+          }
         }, (err, events) => {
           console.log(err, events);
           if(err == null){

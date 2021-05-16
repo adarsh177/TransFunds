@@ -114,7 +114,7 @@ contract TransFUNDS{
         return ngoIds;
     }
 
-    function getNGOAddressFromId(string memory id) internal view returns(bool, address){
+    function getNGOAddressFromId(string memory id) public view returns(bool, address){
         uint matchIndex = 0;
         for(uint i = 0; i < totalNGOs; i++){
             if(compareStrings(ngoIds[i], id)){
@@ -130,7 +130,7 @@ contract TransFUNDS{
         }
     }
 
-    function getNGOIdFromAddress(address ngo_address) internal view returns(bool, string memory){
+    function getNGOIdFromAddress(address ngo_address) public view returns(bool, string memory){
         uint matchIndex = 0;
         for(uint i = 0; i < totalNGOs; i++){
             if(ngoAddresses[i] == ngo_address){

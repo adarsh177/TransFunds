@@ -29,9 +29,12 @@ class Dashboard extends React.Component {
   loadMyDonations(){
     window.web3.eth.getBlockNumber()
       .then(bn => {
-        window.contract.getPastEvents('allEvents', {
+        window.contract.getPastEvents('Transaction', {
           fromBlock: bn-500,
-          toBlock: 'latest'
+          toBlock: 'latest',
+          filter: {
+            from: window.accountId
+          }
         }, (err, events) => {
           console.log(err, events);
           if(err == null){
