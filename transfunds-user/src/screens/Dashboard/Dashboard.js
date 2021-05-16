@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
             </Link>
           </div>
           <SubHeading value="My Donation" />
-          <Scrollbars>
+          <Scrollbars autoHide autoHideTimeout={1000} autoHideDuration={200}>
             <DashboardCard
               ngo_name="Hemkunt Foundation"
               tID="63641"

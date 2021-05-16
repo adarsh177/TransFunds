@@ -12,6 +12,7 @@
   border-radius: 50%;
   border: 1px solid #bebebe;
   margin-right: 15px;
+  object-fit: cover;
 }
 
 .ngoName {

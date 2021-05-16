@@ -28,7 +28,7 @@ export class ListYourNgo extends Component {
             </button>
           </div>
           <SubHeading value="Instructions" />
-          <Scrollbars>
+          <Scrollbars autoHide autoHideTimeout={1000} autoHideDuration={200}>
             <p className="instruction-content">{instructions}</p>
           </Scrollbars>
         </div>

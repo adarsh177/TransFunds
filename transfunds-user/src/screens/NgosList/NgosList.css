@@ -1,13 +1,13 @@
 .searchngo-wrapper {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   margin-top: 20px;
 }
 
 .searchngo {
-  width: 94%;
+  width: 92%;
   border: 1px solid #dadada;
   font-size: 11px;
   height: 2rem;
@@ -25,5 +25,26 @@
   width: 100%;
   height: 1px;
   background-color: #bebebe;
-  margin: 15px 0 10px 0;
+  margin: 1px 0 10px 0;
+}
+.search-btn {
+  position: relative;
+  width: 50px;
+  height: 30px;
+  top: -30px;
+  left: calc(100% - 50px);
+  opacity: 0.6;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease all;
+}
+.search-btn:hover,
+.search-btn:active {
+  opacity: 1;
+  transform: scale(1.05);
+}
+.search-img {
+  width: 20px;
+  height: 20px;
 }

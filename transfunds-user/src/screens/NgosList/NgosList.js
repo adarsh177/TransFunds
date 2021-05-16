@@ -4,6 +4,7 @@ import Topbar from "../../components/Topbar/Topbar";
 import "./NgosList.css";
 import { Scrollbars } from "react-custom-scrollbars";
 import NgoListCard from "../../components/NgoListCard/NgoListCard";
+import SearchIcon from "../../resources/search.png";
 
 export class NgosList extends Component {
   render() {
@@ -17,9 +18,12 @@ export class NgosList extends Component {
               type="text"
               placeholder="Search for NGOs"
             />
+            <button className="search-btn">
+              <img className="search-img" src={SearchIcon} alt="search icon" />
+            </button>
           </div>
           <span className="ngoslist-line"></span>
-          <Scrollbars>
+          <Scrollbars autoHide autoHideTimeout={1000} autoHideDuration={200}>
             <NgoListCard
               ngoname="Hemkunt foundation"
               ngoid="36544"
