@@ -4,7 +4,7 @@ module.exports = {
     getNGODetail: (id, cb) => {
         axios({
             method: 'get',
-            url: `https://back.transfunds.developersmonk.com/NGODetail?id=${id}`
+            url: `http://localhost:2020/NGODetail?id=${id}`
         }).then(
             details => {
                 console.log('details', details);

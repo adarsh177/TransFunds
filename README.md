@@ -22,11 +22,17 @@ Tarnsparent Fund transfer to NGOs. All the NGOs listed here are verified through
  - AWS EC2 - hosted react app on it.
 
  **Run on your own local machine** <br>
-	      1. Clone this repository to your local machine.<br>
+	    1. Clone this repository to your local machine.<br>
         2. Go to backend folder.<br>
         3. run command `npm install` to install dependencies.<br>
-        4. run command `node index.js` start the server.<br>
-        5. Open another terminal and go to the `transfunds-user`.<br>
-        6. run command `npm install` to install dependencies.<br>
-        7. run command `npm start`, That's it you are all good to explore the web app.<br>
+        4. create secret.json with following structure: 
+        {
+            "mnemonic": "wallet_mnemonic",
+            "email": "email_address",
+            "pass": "email_pass_or_accesstoken"
+        }
+        5. run command `node index.js` start the server.<br>
+        6. Open another terminal and go to the `transfunds-user`.<br>
+        7. run command `npm install` to install dependencies.<br>
+        8. run command `npm start`, That's it you are all good to explore the web app.<br>
  
