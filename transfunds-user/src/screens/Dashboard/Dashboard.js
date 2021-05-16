@@ -27,29 +27,30 @@ class Dashboard extends React.Component {
   }
 
   loadMyDonations(){
-    window.contract.getPastEvents('Transaction', (err, events) => {
-      console.log(err, events);
-      if(err == null){
-        console.log('Got events', events);
-        this.state.myDonations = [];
-        events.forEach(event => {
-            if(event.returnValues.to !== null && event.returnValues.from !== null && event.returnValues.amount !== null){
-                this.state.transactions.push({
-                    to: event.returnValues.to,
-                    from: event.returnValues.from,
-                    amount: event.returnValues.amount,
-                });
-            }
+    window.web3.eth.getBlockNumber()
+      .then(bn => {
+        window.contract.getPastEvents('allEvents', {
+          fromBlock: bn-500,
+          toBlock: 'latest'
+        }, (err, events) => {
+          console.log(err, events);
+          if(err == null){
+            console.log('Got events', events);
+            this.state.myDonations = [];
+            events.forEach(event => {
+              this.state.myDonations.push({
+                  to: event.returnValues.to,
+                  from: event.returnValues.from,
+                  amount: event.returnValues.amount,
+              });
+            });
+          }else{
+            console.log('Error getting events', err);
+          }
+          this.setState({loaded: true});
         });
-      }else{
-        console.log('Error getting events', err);
-      }
-      this.setState({loaded: true});
-    }).then(rslt => {
-      console.log('eve rslt', rslt);
-    }).catch(ex => {
-      console.log('ev err', ex);
-    });
+        console.log('Current block', bn);
+      });
   }
 
   render() {

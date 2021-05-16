@@ -8,14 +8,133 @@ import "react-tabs/style/react-tabs.css";
 import SubHeading from "../../components/SubHeading/SubHeading";
 import { Scrollbars } from "react-custom-scrollbars";
 import TransactionCard from "../../components/TransactionCard/TransactionCard";
+import Utils from "../../Utils/Utils";
+import DontaionDialog from "../../components/DonationDialog";
 
 export class NgoDetail extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      details: {},
+      transactions: [],
+      showDialog: false,
+      total: 0,
+    } 
+  }
+
+  componentDidMount(){
+    if(Object.keys(this.state.details).length == 0)
+      this.loadData();
+  }
+
+  loadData(){
+    var data = {};
+    var query = this.props.location.search.replace('?', '');
+    query.split('&').forEach(pair => {
+        data[pair.split('=')[0]] = pair.split('=')[1];
+    })
+
+    this.setState({id: data['id']});
+    
+    if(!data['id']){
+        this.props.history.goBack();
+        return;
+    }
+
+    this.loadTotalDonation(data['id']);
+    Utils.getNGODetail(data['id'], (err, details) => {
+      if(err == null){
+        this.setState({details: details});
+        console.log('Details', details);
+        this.forceUpdate();
+      }else{
+        this.props.history.goBack();
+        alert('Error loading information');
+      }
+      this.loadTransactions(data['id']);
+    });
+  }
+
+  loadTransactions(id){
+    // window.contract.events.Transaction()
+    //   .on('data', (data) => {
+    //     alert(JSON.stringify(data));
+    //   });
+
+    window.web3.eth.getBlockNumber()
+      .then(bn => {
+        window.contract.getPastEvents('allEvents', {
+          fromBlock: bn-500,
+          toBlock: 'latest'
+        }, (err, events) => {
+          console.log(err, events);
+          if(err == null){
+            console.log('Got events', events);
+            this.state.transactions = [];
+            events.forEach(event => {
+                if(event.returnValues.to !== null && event.returnValues.from !== null && event.returnValues.amount !== null){
+                    this.state.transactions.push({
+                        to: event.returnValues.to,
+                        from: event.returnValues.from,
+                        amount: event.returnValues.amount,
+                    });
+                }
+            });
+            this.forceUpdate();
+          }else{
+            console.log('Error getting events', err);
+          }
+          this.setState({loaded: true});
+        });
+        console.log('Current block', bn);
+      });
+  }
+
+  onDonate(amount){
+    amount = parseInt(amount, 10);
+    if(amount > 0){
+      this.setState({showDialog: false});
+      window.contract.methods.DonateToNGO(this.state.id)
+        .send({
+          from: window.accountId,
+          value: amount
+        })
+        .on("transactionHash", (hash) => {
+          alert('Donation made successfully!');
+          this.state.transactions.push({
+            to: this.state.id,
+            from: window.accountId,
+            amount: amount
+          });
+          this.forceUpdate();
+          this.loadData();
+        })
+        .on("error", (error, recept) => {
+            alert("Errer making donation : " + error);
+            console.log('Error making donation ', error, recept);
+        });
+    }else{
+      alert('Please enter a valid amount');
+    }
+  }
+
+  loadTotalDonation(id){
+    window.contract.methods.GetTotalDonationOfNGO(id)
+      .call()
+      .then(donation => {
+        this.setState({total: donation});
+      }).catch(er => {
+        console.log('Error getting total', er);
+        this.setState({total: 0});
+      })
+  }
+
   render() {
-    const workingSector =
-      "Anim esse enim adipisicing dolore quis excepteur et. Labore duis proident nisi dolore cupidatat est dolor elit exercitation commodo. In duis culpa ipsum ullamco voluptate in elit aliqua. Aliquip nulla anim est ipsum consequat proident tempor magna ut qui veniam nulla laborum officia. Nulla veniam eiusmod esse cillum labore qui consectetur ipsum nostrud enim ea eiusmod culpa.Sit nisi quis sint esse elit occaecat et qui. Nisi pariatur excepteur magna ipsum voluptate exercitation et aliqua. Cupidatat sunt amet consequat in cillum nulla occaecat qui dolore cillum sint amet. Aliquip sunt dolor sit laborum exercitation fugiat officia dolore laborum irure Lorem velit amet. Irure consequat laboris exercitation exercitation nulla sint aliquip et. Id nostrud mollit labore veniam magna cupidatat sint minim amet quis ex.";
+    
     return (
       <div className="MainContainer">
         <div className="MobileContainer MobileContainerFlow">
+          <DontaionDialog show={this.state.showDialog} onDonate={(amount)=> this.onDonate(amount)}/>
           <Topbar title="NGO's details" />
           <div className="pre-wrapper-tabs">
             <Tabs>
@@ -27,13 +146,13 @@ export class NgoDetail extends Component {
               <TabPanel>
                 <div className="NgoDetailCard-wrapper">
                   <NgoDetailCard
-                    name="Hemkunt Fundation"
-                    field="Animal care"
-                    ngoid="324646"
-                    phone="9876543210"
-                    email="hmknt@foundation.com"
-                    location="Mumbai"
-                    donations="5245"
+                    name={this.state.details.name}
+                    ngoid={this.state.id}
+                    phone={this.state.details.mobile}
+                    email={this.state.details.email}
+                    location={this.state.details.location}
+                    donations={this.state.total}
+                    onDonationClick={() => this.setState({showDialog: true})}
                   />
                 </div>
                 <SubHeading value="Working sector" />
@@ -43,7 +162,7 @@ export class NgoDetail extends Component {
                     autoHideTimeout={1000}
                     autoHideDuration={200}
                   >
-                    <p className="ws-content">{workingSector}</p>
+                    <p className="ws-content">{this.state.details.field}</p>
                   </Scrollbars>
                 </div>
               </TabPanel>
@@ -54,45 +173,18 @@ export class NgoDetail extends Component {
                     autoHideTimeout={1000}
                     autoHideDuration={200}
                   >
-                    <TransactionCard
-                      username="Aman kumar"
-                      tid="354343"
-                      pamount="+ ₹500"
-                    />
-                    <TransactionCard
-                      username="Aman kumar"
-                      tid="354343"
-                      pamount="+ ₹500"
-                    />
-                    <TransactionCard
-                      username="Aman kumar"
-                      tid="354343"
-                      pamount="+ ₹500"
-                    />
-                    <TransactionCard
-                      username="Aman kumar"
-                      tid="354343"
-                      namount="- ₹500"
-                      reasonParameter="Reason - "
-                      reason="Food, Cloths"
-                    />
-                    <TransactionCard
-                      username="Aman kumar"
-                      tid="354343"
-                      pamount="+ ₹500"
-                    />
-                    <TransactionCard
-                      username="Aman kumar"
-                      tid="354343"
-                      pamount="+ ₹500"
-                    />
-                    <TransactionCard
-                      username="Aman kumar"
-                      tid="354343"
-                      namount="- ₹500"
-                      reasonParameter="Reason - "
-                      reason="Food, Cloths"
-                    />
+                    {this.state.transactions.map(
+                      tr => {
+                        return(
+                          <TransactionCard
+                            username={tr.from}
+                            tid={tr.to}
+                            pamount={tr.amount + "WEI"}
+                          />
+                        )
+                      }
+                    )}
+                    
                   </Scrollbars>
                 </div>
               </TabPanel>

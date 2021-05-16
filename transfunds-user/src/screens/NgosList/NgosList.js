@@ -40,7 +40,7 @@ export class NgosList extends Component {
                 name: rslt.name,
                 field: rslt.field,
                 name: rslt.name,
-                location: rslt.location
+                location: rslt.location == "" ? "Not Set": rslt.location
               });
               this.forceUpdate();
             }
@@ -79,6 +79,7 @@ export class NgosList extends Component {
                     location={ngo.location}
                     field={ngo.field.substring(0, 100)}
                     source="https://codesign.com.bd/conversations/content/images/2020/03/Sprint-logo-design-Codesign-agency.png"
+                    onClick={() => this.props.history.push(`/ngodetail?id=${ngo.id}`)}
                   />
                 );
               }

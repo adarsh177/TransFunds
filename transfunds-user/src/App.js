@@ -23,7 +23,7 @@ class App extends React.Component {
           <Route path="/ngolist" exact>
             <NgosList />
           </Route>
-          <Route path="/ngodetail" exact>
+          <Route path="/ngodetail">
             <NgoDetail />
           </Route>
         </Switch>

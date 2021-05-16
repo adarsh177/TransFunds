@@ -4,6 +4,8 @@
 .NgoDetailCard-wrapper {
   width: 100%;
   margin-top: 20px;
+  overflow-y: scroll;
+  flex: 1;
 }
 .ws-content-wrapper {
   width: 100%;
