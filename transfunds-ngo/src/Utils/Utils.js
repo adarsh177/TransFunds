@@ -23,7 +23,7 @@ module.exports = {
         }).then(
             details => {
                 console.log('details', details);
-                cb(v_id, email);
+                cb(details.body.v_id, details.body.email);
             }
         ).catch(err => {
             console.log('Error sending otp', err);
