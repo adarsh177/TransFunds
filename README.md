@@ -16,6 +16,7 @@ Tarnsparent Fund transfer to NGOs. All the NGOs listed here are verified through
  - Matic - testnet blockchain
  - ReactJS - Frontend
  - Web3.js - to interact with SmartContracts
+ - AWS EC2 - hosted react app on it.
 
  **Run on your own local machine** <br>
 	      1. Clone this repository to your local machine.<br>
