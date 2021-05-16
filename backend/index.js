@@ -26,6 +26,7 @@ app.post('/AddNGO_SendOTP', (req, res) => {
                     res.send({
                         success: 1,
                         v_id: v_id,
+                        email: details.email,
                         message: "OTP Sent"
                     });
                 }else{

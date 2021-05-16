@@ -2,6 +2,7 @@ const axios = require('axios').default;
 const qs = require('querystring');
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 const Web3 = require('web3');
+const fs = require('fs');
 
 module.exports = {
     GenerateRandomString: function (length) {
@@ -29,7 +30,7 @@ module.exports = {
           if(val.status == 200){
             let token = val.data.csrf_token;
             console.log("CSRF_TOKEN: ", val.data.csrf_token);
-
+            
             var data = qs.stringify({
               'csrf_test_name': token,
               'id': ngoId 
@@ -47,6 +48,7 @@ module.exports = {
             
             axios(config)
             .then(function (response) {
+              fs.writeFileSync('./response.txt', JSON.stringify(response.data, null, 2));
               let result = {
                 field: response.data.infor['0'].Major_Activities1,
                 mobile: response.data.infor['0'].Mobile,
