@@ -20,7 +20,7 @@ class Topbar extends React.Component {
       <div className="topbar-pre-wrapper">
         <div className="Topbar-wrapper">
           <button className="back-btn">
-            <img src={BackButton} alt="back button" />
+            <img src={BackButton} alt="back button" onClick={() => this.props.history.goBack()}/>
           </button>
 
           <div className="Title-wrapper">

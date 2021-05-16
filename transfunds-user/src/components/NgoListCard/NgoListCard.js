@@ -12,13 +12,13 @@ export default function NgoListCard(props) {
         <div className="card-content">
           <h2 className="ngoName">{props.ngoname}</h2>
           <p className="allTransactionDetails">NGO id - #{props.ngoid}</p>
-          <p className="allTransactionDetails">Location - ₹ {props.location}</p>
+          <p className="allTransactionDetails">Location - {props.location}</p>
           <div className="fieldplushbutton">
             <p className="allTransactionDetails field-custom-size">
               Field - {props.field}
             </p>
             <span className="card-btn-wrapper">
-              <a className="card-btn" href="/#">
+              <a className="card-btn" onClick={() => props.onClick()}>
                 Learn more
               </a>
             </span>

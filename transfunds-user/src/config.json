@@ -1,6 +1,6 @@
 {
     "portis_app_id": "d8114455-6fa6-4d5c-af50-7f1a6bc7aae8",
-    "nodeUrl": "https://rpc-mumbai.matic.today",
+    "nodeUrl": "https://rpc-mumbai.maticvigil.com",
     "chainId": 137,
     "contractAddress": "0xa644593f7f97803454Fd0dEAee8303c876C7DE76",
     "contractAbi": [
