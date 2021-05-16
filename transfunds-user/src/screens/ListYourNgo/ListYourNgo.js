@@ -8,7 +8,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 export class ListYourNgo extends Component {
   render() {
     let instructions =
-      "Consequat nostrud Lorem et enim eu culpa aliquip. Labore nisi velit proident aliquip aliqua ipsum sunt do est exercitation veniam pariatur deserunt. Eu esse anim laboris eiusmodnisi incididunt Lorem. Adipisicing ex cillum incididunt laborumConsequat nostrud Lorem et enim eu culpa aliquip. Labore nisi velit proident aliquip aliqua ipsum sunt do est exercitation veniam pariatur deserunt. Eu esse anim laboris eiusmodnisi incididunt Lorem. Adipisicing ex cillum incididunt laborumConsequat nostrud Lorem et enim eu culpa aliquip. Labore nisi velit proident aliquip aliqua ipsum sunt do est exercitation veniam pariatur deserunt. Eu esse anim laboris eiusmodnisi incididunt Lorem. Adipisicing ex cillum incididunt laborumConsequat nostrud Lorem et enim eu culpa aliquip. Labore nisi velit proident aliquip aliqua ipsum sunt do est exercitation veniam pariatur deserunt. Eu esse anim laboris eiusmodnisi incididunt Lorem. Adipisicing ex cillum incididunt laborum";
+      "Enter you Registeration number provided by the Govt. (refer : https://ngodarpan.gov.in/), Upload your NGO's Logo and click on submit,Hurray! you have just listed your NGO and you are now eligible for taking donations.";
     return (
       <div className="MainContainer">
         <div className="MobileContainer MobileContainerFlow">
