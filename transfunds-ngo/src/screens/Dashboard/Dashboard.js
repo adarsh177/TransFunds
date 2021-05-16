@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Topbar from "../../components/Topbar/Topbar";
+import Button from "../../components/Button/Button";
 import SubHeading from "../../components/SubHeading/SubHeading";
 import TransactionCard from "../../components/TransactionCard/TransactionCard";
 import NgoDetailCardDashboard from "../../components/NgoDetailCardDashboard/NgoDetailCardDashboard";
@@ -64,6 +65,22 @@ class Dashboard extends Component {
                 namount="- ₹551"
               />
             </Scrollbars>
+          </div>
+          <div className="Fixed-bottom-wrapper">
+            <div className="DonationsStats">
+              <div className="stats-container">
+                <p className="StatsParameter"> Total - </p>
+                <p className="statsValue">₹51515</p>
+              </div>
+              <div className="stats-container">
+                <p className="StatsParameter">Amount Left -</p>
+                <p className="statsValue">₹51515</p>
+              </div>
+            </div>
+            <span class="middleLine"></span>
+            <div>
+              <Button value="Withdraw" />
+            </div>
           </div>
         </div>
       </div>
